@@ -1,0 +1,12 @@
+function nombre(p1,p2,p3){
+  }
+
+para llamar la funcion sería nombre(p1,p2);
+
+se le pueden asignar valores por defectos
+
+funciton nombre($parametro1 = 50){
+
+}
+
+si en la llamada no se introduce parametro, se le asigna el valor por defecto.

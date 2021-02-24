@@ -1,0 +1,48 @@
+#PHP Basics Exam 25-11-2015
+
+
+1. Con el siguiente array
+
+    $data = array(
+
+              '22222222X' => array(
+                "Nombre"=> "Juan",
+                "Apellidos" => "Perez",
+                "Localidad" => "Bormujos"
+              ),
+              '33333333X' => array(
+                "Nombre"=> "Paco",
+                "Apellidos" => "Fernández",
+                "Localidad" => "Salteras"
+              ),
+              '44444444X' => array(
+                "Nombre"=> "Manuel",
+                "Apellidos" => "Rodríguez",
+                "Localidad" => "Gines"
+              )
+    );
+
+    crea una lista de la siguiente forma:
+
+    * 22222222X
+      * Nombre: Juan
+      * Apellidos: Perez
+      * Localidad: Bormujos
+    * 33333333X
+      * Nombre: Paco
+      * Apellidos: Fernández
+      * Localidad: Salteras
+    * 44444444X
+      * Nombre: Manuel
+      * Apellidos: Rodríguez
+      * Localidad: Gines
+
+
+2. Crea una funcion que reciba 3 arrays con numeros y devuelva un
+array asociativo con el promedio de cada uno de los arrays.
+
+3. Muestra una tabla con el contenido de la tabla de la base de datos "REPARACION".
+    La identificación de cada "REPARACION" debe pasarse a ex42.php a través de GET
+
+4. Obtenga la REPARACION Id pasada utilizando get to the scripts
+y muestre la información de todos los RECAMBIOS utilizados en esa REPARACION

@@ -1,0 +1,26 @@
+Fichero que sirve para construir nuevas imagenes.
+ELEMENTOS
+- FROM --> de que imagen quieres partir (iestriana/lamp)
+- ENV DEBIAN_FRONTEND=noninteractive --> es para que no te pida ordenes por pantalla para ninguna instalacion
+- RUN --> es para ejecutar ordenes en la nueva imagenes
+- ADD --> añadir ficheros a la nueva imagenes
+- CMD --> punto de entrada, solo puede haber un CMD en cada dockerfile. Lo que se ejecuta cuando arranca el contenedor
+
+docker build  . -->
+
+PASOS PARA GENERAR UNA IMAGEN DOCKER APARTIR DEL github:
+
+FROM iestriana/lamp
+
+MAINTEINER email
+
+#Instalar github
+RUN apt-get -y install git
+
+RUN git clone ---- /var/html
+
+# Crear script que cree tablas,insertar usuario admin
+
+# de normal tiene que estar la base de datos vacia menos el administrador
+
+# RUN setup_vhos.sh

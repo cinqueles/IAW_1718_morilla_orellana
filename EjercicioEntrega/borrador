@@ -1,0 +1,102 @@
+<?php
+  $connection = new mysqli("192.168.1.104", "root", "Admin2015", "tf");
+  $connection->set_charset("uft8");
+
+  if ($connection->connect_errno) {
+      printf("Connection failed: %s\n", $connection->connect_error);
+      exit();
+  }
+  $rep="SELECT r.IdReparacion, Matricula, Averia, CodEmpleado
+        from reparaciones r join intervienen i
+        on	r.idReparacion = i.idReparacion
+        where r.idReparacion=".$_GET['id'];
+
+  if ($result = $connection->query($rep)) {
+      printf("<p>The select query returned %d rows.</p>", $result->num_rows);
+      while($obj = $result->fetch_object()) {
+      echo "<tr>";
+      echo "<td>".$obj->IdReparacion."</td>";
+      echo "<td>".$obj->Matricula."</td>";
+      echo "<td>".$obj->Averia."</td>";
+      echo "<td>".$obj->CodEmpleado."</td>";
+      echo "<td><select name='empleado'>";
+        $connection = new mysqli("192.168.1.104", "root", "Admin2015", "tf");
+        $connection->set_charset("uft8");
+
+        if ($connection->connect_errno) {
+            printf("Connection failed: %s\n", $connection->connect_error);
+            exit();
+        }
+        $emp="SELECT CodEmpleado, Nombre, Apellidos FROM empleados";
+        if ($result = $connection->query($emp)) {
+          while($obj = $result->fetch_object()) {
+
+              echo "<option value='".$obj->CodEmpleado."'>".$obj->Nombre." , ".$obj->Apellidos."</option>";
+
+          }
+              echo "</select></td>";
+          $result->close();
+          unset($obj);
+          unset($connection);
+        }
+    }
+    echo "</tr>";
+    $result->close();
+    unset($obj);
+    unset($connection);
+  }
+?>
+
+----------------------------------------------------------------------
+<?php
+  $connection = new mysqli("192.168.1.104", "root", "Admin2015", "tf");
+  $connection->set_charset("uft8");
+
+  if ($connection->connect_errno) {
+      printf("Connection failed: %s\n", $connection->connect_error);
+      exit();
+  }
+  $rep="SELECT r.IdReparacion, Matricula, Averia, CodEmpleado
+        from reparaciones r join intervienen i
+        on	r.idReparacion = i.idReparacion
+        where r.idReparacion=".$_GET['id'];
+  echo "$rep";
+  if ($result = $connection->query($rep)) {
+      printf("<p>The select query returned %d rows.</p>", $result->num_rows);
+      while($obj = $result->fetch_object()) {
+        echo "<p><b>Nº Reparacion: </b>".$obj->IdReparacion."</p>";
+        echo "<p><b>Matricula: </b>".$obj->Matricula."</p>";
+        echo "<p><b>Averia: </b>".$obj->Averia."</p>";
+        echo "<p><b>Codigo empleado: </b>".$obj->CodEmpleado."</p>";
+        echo "<select name=cliente>";
+          $connection = new mysqli("192.168.1.104", "root", "Admin2015", "tf");
+          $connection->set_charset("uft8");
+
+          if ($connection->connect_errno) {
+              printf("Connection failed: %s\n", $connection->connect_error);
+              exit();
+          }
+          $emp="SELECT CodEmpleado, Nombre, Apellidos FROM empleados";
+          if ($result = $connection->query($emp)) {
+            while($obj = $result->fetch_object()) {
+                echo "<option value='".$obj->CodEmpleado."'>".$obj->Nombre." , ".
+                      $obj->Apellidos."</option>";
+            }
+                echo "</select><br>";
+          }
+        echo "------------------------------------------------------------------------";
+        $result->close();
+        unset($obj);
+        unset($connection);
+    }
+    //echo "</tr>";
+    $result->close();
+    unset($obj);
+    unset($connection);
+  }
+  echo "<br>";
+  echo "$emp";
+  echo "<br>";
+  ?>
+  <input type="submit" value="Asignar">
+</form>
